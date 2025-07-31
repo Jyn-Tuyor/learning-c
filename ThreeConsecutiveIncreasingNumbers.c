@@ -11,18 +11,15 @@ bool func(int array[], int length)
 {
 
     int diff = 0;
-
+    int diffAfter = 0;
     for (int i = 0; i < length - 3; i++)
     {
         diff = abs(array[i] - array[i + 1]);
-        if (diff == 1)
-        {
-            diff = abs(array[i + 1] - array[i + 2]);
+        diffAfter = abs(array[i + 1] - array[i + 2]);
 
-            if (diff == 1)
-            {
-                return true;
-            }
+        if (diff == 1 && diffAfter == 1)
+        {
+            return true;
         }
     }
 
