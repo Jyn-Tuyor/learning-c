@@ -1,48 +1,31 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct Node 
-{
-    int value;
-    struct Node *next; // this points to another Node type
-} Node;
+struct Node {
+    int data;
+    struct Node *next;
+};
 
-// Node *new_node(int data, Node *prev) {
-//     Node *node = (Node *)malloc(sizeof(Node));
-    
-//     if (node == NULL) {
-//         printf("Memory is not allocated\n");
-//         exit(1);
-//     }
+struct Node *create_node(int data) {
+    struct Node *new_node = (struct Node*)malloc(sizeof(struct Node));
 
-//     node->data = data;
-//     node->prev = prev;
-
-//     return node;
-
-// }
-
-int main(int argc, char* argv[]) {
-    Node head;
-    head.value = 12;
-    head.next = malloc(sizeof(Node));
-
-    head.next->value = 13;
-    head.next->next = NULL;
-
-
-    printf("First: %d\n", head.value);
-    printf("Second: %d\n\n", head.next->value);
-
-
-    // Iterating
-    Node *curr = &head;
-
-    while (curr != NULL) {
-        printf("%d\n", curr->value);
-        curr = curr->next;
+    if (new_node == NULL) {
+        printf("Memory could not be allocated\n");
+        exit(1); 
     }
+
+    new_node->data = data;
+    new_node->next = NULL;
+
+
+    return new_node;
+
+}
+
+int main() {
+
+    struct Node *head = create_node(5);
+
 
     return 0;
 }
-
