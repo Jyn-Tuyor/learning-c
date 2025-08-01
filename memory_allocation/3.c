@@ -10,19 +10,21 @@ int main(void)
 
     int *ptr = (int *)malloc(n * sizeof(int));
     int val;
+    int sum = 0;
 
     for (int i = 0; i < n; i++)
     {
         printf("Element - %d : ", i);
         scanf("%d", &val);
-
+        sum += val;
         ptr[i] = val;
     }
-
     for (int i = 0; i < n; i++)
     {
         printf("%d, ", ptr[i]);
     }
+
+        printf("\nSum: %d, ", sum);
 
     free(ptr);
 
