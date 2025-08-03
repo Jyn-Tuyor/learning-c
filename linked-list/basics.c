@@ -48,49 +48,31 @@ int main() {
 
     int value;
     char ch;
+    int counter = 0;
 
-
-    while(1) {
-        printf("q to quit, w to add new data: ");
-        // fgets(buff, sizeof(buff), stdin);
-
-        ch = getchar();
-
-        // Consume newline chars left in the buffer
-        while (getchar() != '\n');
-
-        if (ch == 'q'){ 
-            break;
-        }
-
-
-        int value;
-        printf("Enter new value: ");
+    do {    
+        printf("Enter new node value: ");
         scanf("%d", &value);
 
-        // if (head != NULL) {
-            // struct Node *temp = createNode(value);
-            // head->next = temp;
-        // }
-        struct Node *curr = head;
 
-        while (curr != NULL) {
-            struct Node *temp = createNode(value);
+        if (head->next == NULL) {
+            struct Node *new = createNode(value);
+            head->next = new;
+        } else {
+            struct Node *curr = head; // this will soon be assigned to the last element of the linked list
 
-            if (curr->next == NULL) {
-                curr->next = temp;
+            while (curr->next != NULL) {
+                curr = curr->next;
             }
-            curr = curr->next;
+
+            curr->next = createNode(value);
+
         }
-
-
-
-
-
-    }
-
+        counter++;
+    } while(counter!=10);
 
     displayList(head);
+
 
     return 0;
 }
