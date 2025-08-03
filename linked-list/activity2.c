@@ -16,52 +16,61 @@
     Insert value 20 → List: 20 -> 10 -> 5
 */
 
-
-struct Node {
+struct Node
+{
     int data;
     struct Node *next;
 };
 
+struct Node *insert_beggining(struct Node *head, int data)
+{
+    struct Node *temp = (struct Node *)malloc(sizeof(struct Node));
 
-struct Node *insert_beggining(struct Node *head, int data) {
-    if (head == NULL) {
-        printf("HEAD IS NULL");
+    if (temp == NULL)
+    {
+        printf("Allocation failed");
         exit(1);
     }
 
-    struct Node *temp = (struct Node *)malloc(sizeof(struct Node));
     temp->data = data;
     temp->next = head;
 
-    printf("New node: %d\n", temp->data);
-    printf("New node points to: %d\n", temp->next->data);
-    return temp;
+    // if (head->next != NULL) {
+    //     printf("New node: %d\n", temp->data);
+    //     printf("New node points to: %d\n", temp->next->data);
+    // }
 
+    return temp;
 }
 
+void display_list(struct Node *head)
+{
+    struct Node *curr = head;
 
-int main(void) {
-    struct Node *head = (struct Node *)malloc(sizeof(struct Node));
+    while (curr != NULL)
+    {
+        printf("%d ", curr->data);
+        if (curr->next != NULL) printf("-> ");
+        curr = curr->next;
+    }
+
+    printf("\n");
+}
+
+int main(void)
+{
+    struct Node *head = NULL;
     int count = 5;
     int value;
 
-    head->data = 6;
-    head->next = NULL;
-
-
-    for (int i = 0; i < count; i++) {
+    for (int i = 0; i < count; i++)
+    {
         printf("Insert value -> ");
         scanf("%d", &value);
 
-        // function call;
-        struct Node *new = insert_beggining(head, value);
-        head = new;
+        head = insert_beggining(head, value);
+        display_list(head);
     }
-
-
-
 
     return 0;
 }
-
-
