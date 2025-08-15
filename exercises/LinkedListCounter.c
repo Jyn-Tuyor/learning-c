@@ -1,61 +1,69 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct node {
+struct node
+{
     int data;
     struct node *next;
 };
 
-struct node *traverse(struct node *head) {
+struct node *traverse(struct node *head)
+{
     struct node *curr = head;
 
-    while (curr->next != NULL) {
+    while (curr->next != NULL)
+    {
         curr = curr->next;
     }
 
-
     return curr;
 }
-void display(struct node *head) {
-	struct node *curr = head;
-
-	while (curr!=NULL) {
-		printf("%d ", curr->data);
-		curr = curr->next;
-	}
-	printf("\n");
+void display(struct node *head)
+{
+    struct node *curr = head;
+    int total_nodes = 0;
+    while (curr != NULL)
+    {
+        total_nodes++;
+        printf("%d ", curr->data);
+        curr = curr->next;
+    }
+    printf("Total number of nodes %d", total_nodes );
+    printf("\n");
 }
-struct node *create(int data) {
+struct node *create(int data)
+{
     struct node *new = (struct node *)malloc(sizeof(struct node));
 
-        new->data = data;
-        new->next = NULL;
-        return new;
-
+    new->data = data;
+    new->next = NULL;
+    return new;
 }
 
-
-int main() {
+int main()
+{
     int amount;
     int data;
     struct node *head = NULL;
     printf("Input the number of nodes: ");
     scanf("%d", &amount);
 
-
-    for (int i = 0; i < amount; i++) {
+    for (int i = 0; i < amount; i++)
+    {
         printf("Data = ");
         scanf("%d", &data);
-        
-        if (head == NULL) {
+
+        if (head == NULL)
+        {
             head = create(data);
-        } else {
+        }
+        else
+        {
             struct node *new = create(data);
             struct node *last_element = traverse(head);
 
-           last_element->next = new; 
+            last_element->next = new;
         }
-    
     }
 
     display(head);
