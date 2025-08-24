@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 
+
 // 1, 2, 1, 1, 5
 void print_uniques(int array[], int n) {
 	bool flag = false;
