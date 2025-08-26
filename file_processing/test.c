@@ -2,8 +2,14 @@
 #include <stdlib.h>
 #include <string.h>
 
+// #include <dirent.h>
+// dirent should be use to implement the "listing out the files in the dir"
+// but im too lazy to download or set up it lol
+// -lazy af
 
 void add_diary();
+void read_diary();
+
 
 int main(void)
 {
@@ -65,15 +71,9 @@ void add_diary()
     fprintf(fptr, content_buffer);
 
     fclose(fptr);
+}
 
-    printf("\nDiary successfully created!");
-    int ch;
-    while ((ch = getchar()) != '\n' && ch != EOF); // flush until newline
+void read_diary() {
+    // TODO: list out diares
 
-    printf("\nPress SPACE to continue...");
-    char will_continue;
-    
-    do {
-        will_continue = getchar();
-    } while (will_continue != ' ' && will_continue != EOF);
 }
