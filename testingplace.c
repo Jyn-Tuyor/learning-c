@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include <string.h>
 
 // 1, 2, 1, 1, 5
 void print_uniques(int array[], int n) {
@@ -20,9 +21,12 @@ void print_uniques(int array[], int n) {
 
 
 int main() {
-	int array[5] = {1, 2, 1, 1, 5};	
-	int n = sizeof(array)/sizeof(array[0]);
-	print_uniques(array, n); 
+	//int array[5] = {1, 2, 1, 1, 5};	
+	//int n = sizeof(array)/sizeof(array[0]);
+	//print_uniques(array, n); 
+
+	printf("%zu", sizeof(char *));
+	
 	return 0;
 
 }

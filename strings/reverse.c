@@ -1,0 +1,20 @@
+#include <stdio.h>
+#include <string.h>
+
+void reverse(char str[]) {
+    int length = strlen(str);
+
+    for (int i = length; i > 0; i--) {
+        printf("%c ", str[i]);
+    }
+
+}
+
+int main(void) {
+    char string[] = "Hello, world";
+
+    reverse(string);
+
+    return 0;
+
+}
