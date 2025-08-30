@@ -1,12 +1,14 @@
 #include <stdio.h>
+#include <string.h>
 
 int main() {
-    char name = 'A';
-    int age = 21;
+    // Concatenating string
+    char str1[] = "yooo";
+    char str2[] = " www";
     
-    char hehe[] = { 'A','B' };
+    strcat(str1, str2);
+    printf("%s", str1);
 
-    printf("Your name is %s and you're %d years old", hehe, age);
 
     return 0;
 }

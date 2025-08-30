@@ -21,11 +21,11 @@ void print_uniques(int array[], int n) {
 
 
 int main() {
-	//int array[5] = {1, 2, 1, 1, 5};	
+	int array[5] = {1, 2, 1, 1, 5};	
 	//int n = sizeof(array)/sizeof(array[0]);
 	//print_uniques(array, n); 
 
-	printf("%zu", sizeof(char *));
+	printf("%zu", sizeof(array)/sizeof(array[0]));
 	
 	return 0;
 
