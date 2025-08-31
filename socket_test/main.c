@@ -5,6 +5,9 @@
 #define DEFAULT_PORT 7878
 int main() {
     WSADATA wsa;
+    int recv_size = 0;
+    char buffer[512];
+
     printf("Start\n");
 
     if (WSAStartup(MAKEWORD(2,2), &wsa) != 0) {
@@ -36,6 +39,18 @@ int main() {
     printf("Client connected\n");
 
 
+    do {
+        recv_size = recv(client_socket, buffer, sizeof(buffer), 0);
+        
+        if (recv_size > 0) {
+            buffer[recv_size] = '\0';
+            printf("Received: %s\n", buffer);
+        }
+    } while (recv_size > 0);
+
+    closesocket(client_socket);
+    closesocket(server_s);
+    WSACleanup();
 
     return 0;
 }
