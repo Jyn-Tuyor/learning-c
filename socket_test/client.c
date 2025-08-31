@@ -10,7 +10,7 @@ int main(void) {
 
     char *message = "Hello from client!";
     char buffer[512];
-    int recv_size;
+    int recv_size = 0;
 
     if (WSAStartup(MAKEWORD(2,2), &wsa) != 0) {
         printf("Error initializing winsock: %d", WSAGetLastError());
@@ -28,6 +28,12 @@ int main(void) {
     connect(sock, (struct sockaddr *)&server, sizeof(server));
     send(sock, message, strlen(message), 0);
 
+    recv_size = recv(sock, buffer, sizeof(buffer), 0);
+
+    if (recv_size > 0) {
+        buffer[recv_size] = '\0';
+        printf("From server: %s", buffer);
+    }
 
     closesocket(sock);
     WSACleanup();

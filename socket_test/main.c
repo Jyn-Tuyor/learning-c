@@ -38,13 +38,14 @@ int main() {
     SOCKET client_socket = accept(server_s, NULL, NULL);
     printf("Client connected\n");
 
-
+    char *message = "This is from the server";
     do {
         recv_size = recv(client_socket, buffer, sizeof(buffer), 0);
         
         if (recv_size > 0) {
             buffer[recv_size] = '\0';
             printf("Received: %s\n", buffer);
+            send(client_socket, message, strlen(message), 0);
         }
     } while (recv_size > 0);
 
