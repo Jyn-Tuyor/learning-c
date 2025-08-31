@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <string.h>
 struct book
 {
     char name[100];
@@ -35,8 +35,8 @@ int main(void)
             scanf("%d", &library[total_books].total_pages);
 
             printf("\t\tEnter author name: ");
-            scanf("%99s", library[total_books].author);
-
+            fgets(library[total_books].author, sizeof(library[total_books].author), stdin);
+            library[total_books].author[strcspn(library[total_books].author, "\n")] = '\0';
             printf("\t\tBook added!");
             total_books++;
             break;
