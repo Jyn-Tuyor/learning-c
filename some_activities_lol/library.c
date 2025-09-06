@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
 struct book
 {
     char name[100];
@@ -24,15 +25,21 @@ int main(void)
         printf("\n\t\t: ");
         scanf("%d", &input);
 
+        // while (getchar() != '\n');
+        fflush(stdin);
+
         switch (input)
         {
         case 1:
             printf("\n\t\t==============================\n");
             printf("\t\tEnter book name: ");
-            scanf("%99s", library[total_books].name);
+            fgets(library[total_books].name, sizeof(library[total_books].name), stdin);
+            library[total_books].name[strcspn(library[total_books].name, "\n")] = '\0';
 
             printf("\t\tEnter total page: ");
-            scanf("%d", &library[total_books].total_pages);
+            char page_buffer[16];
+            fgets(page_buffer, sizeof(page_buffer), stdin);
+            library[total_books].total_pages = atoi(page_buffer);
 
             printf("\t\tEnter author name: ");
             fgets(library[total_books].author, sizeof(library[total_books].author), stdin);
