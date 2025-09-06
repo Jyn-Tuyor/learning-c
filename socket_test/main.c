@@ -3,6 +3,7 @@
 
 #pragma comment(lib, "ws2_32.lib")
 #define DEFAULT_PORT 7878
+
 int main() {
     WSADATA wsa;
     int recv_size = 0;
@@ -37,7 +38,7 @@ int main() {
 
     SOCKET client_socket = accept(server_s, NULL, NULL);
     printf("Client connected\n");
-
+    
     char *message = "This is from the server";
     do {
         recv_size = recv(client_socket, buffer, sizeof(buffer), 0);

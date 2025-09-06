@@ -1,5 +1,8 @@
 {
     "files.associations": {
         "stdio.h": "c"
-    }
+    },
+    "debug.enableStatusBarColor": true,
+    "debug.showInStatusBar": "onFirstSessionStart",
+    "debug.toolBarLocation": "docked"
 }
