@@ -4,7 +4,9 @@ Just a simple repository to track my learning in C
 
 ## ✨ What I have learned so far!!!
 - ✅ Fundamentals
-    - #include <stdio.h> & <stdlib.h>
+    - <stdio.h>
+    - <stdlib.h>
+    - <string.h> 
     - Basic data types
         - int
         - char
@@ -13,15 +15,17 @@ Just a simple repository to track my learning in C
         - double
         - void
     - User defined data types
-        - struct
+        - struct (will learn others soon)
     - for loops
     - do/while loops
     - functions
     - pointers
     - memory allocation
+      
 - ✅ Simple algorithms
     - Bubble sorts
     - *other algorithms you can find in "exercises" folder*
+      
 - ✅ Basics of Linked List
     - Creating
     - Insert to end
