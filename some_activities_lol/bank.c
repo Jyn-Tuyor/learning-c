@@ -49,6 +49,12 @@ void display_accounts(int total_accounts, struct Accounts accounts[])
         printf("Account ID: %d\n", accounts[i].id);
         printf("Account Balance: %f\n", accounts[i].balance);
     }
+
+    printf("press enter key to continue...");
+    
+    char buff[50];
+    // fgets()
+    fgets(buff, sizeof(buff), stdin);
 }
 
 int main()
@@ -57,23 +63,29 @@ int main()
     struct Accounts accounts[MAX_BUFFER];
     int input;
 
-    system("cls");
-    printf("==============Banking Shit==============\n");
-
-    printf("\n[1] Add new account\n");
-
-    scanf("%d", &input);
-    // fflush(stdin);
-
-    switch (input)
+    while (1)
     {
-    case 1:
-        add_account(&total_accounts, accounts);
-        display_accounts(total_accounts, accounts);
-        break;
 
-    default:
-        break;
+        system("cls");
+        printf("==============Banking Shit==============\n");
+
+        printf("\n[1] Add new account\n");
+        printf("\n[1] Edit account\n");
+
+        scanf("%d", &input);
+        // fflush(stdin);
+
+        switch (input)
+        {
+        case 1:
+            add_account(&total_accounts, accounts);
+            display_accounts(total_accounts, accounts);
+            break;
+        case 2:
+            // edit_account();
+        default:
+            break;
+        }
     }
 
     return 0;
