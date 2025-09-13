@@ -2,9 +2,7 @@
 #include <string.h>
 
 int main() {
-    // int var[5] = {1, 2, 3, 4, 2};
-    char str4[] = {'J', 'Y', 'N'};
-    printf("%s", str4);
+    int var[5] = {1, 2, 3, 4, 2};
     // strcpy(destination, source) → copy string
     // strcpy(str3, str1); // string copy
     // printf("strcpy: %s\n", str3);

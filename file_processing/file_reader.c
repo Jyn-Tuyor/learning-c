@@ -14,7 +14,6 @@ void file_reader(char file_name[]) {
 }
 
 int main() {
-    
     file_reader("text.txt");
     return 0;
 }
