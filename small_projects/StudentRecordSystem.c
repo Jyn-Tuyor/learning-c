@@ -2,80 +2,127 @@
 #include <stdlib.h>
 #include <string.h>
 
-struct Student {
+struct Student
+{
     char name[512];
     char course[512];
     char id_number[50];
     int age;
+    struct Student *next;
 };
 
-void add_student(struct Student students[], int *total_students); 
-void display(struct Student students[]);
+void add_student(struct Student **head_node, int *total_students);
+void display(struct Student *head_node);
 
-int main(void) {
-    system("cls");
-
-    struct Student students[512];
+int main(void)
+{
+    struct Student *head_node = NULL;
     int total_students = 0;
-    printf("\t\t========Student Record System========\n");
-    printf("\t\t[1] Add a student\n");
-    printf("\t\t[2] Display\n");
 
-    int input;
-
-    scanf("%d", &input);
-
-    getchar();
-
-    switch (input)
+    system("cls");
+    while (1)
     {
-    case 1:
-        add_student(students, &total_students);
-        break;
-    
-    default:
-        break;
+
+
+        // struct Student students[512];
+        //  struct Student *head_node = (struct Student *)malloc(sizeof(struct Student));
+
+        printf("\t\t========Student Record System========\n");
+        printf("\t\t[1] Add a student\n");
+        printf("\t\t[2] Display\n");
+
+        int input;
+
+        scanf("%d", &input);
+
+        getchar();
+
+        switch (input)
+        {
+        case 1:
+            add_student(&head_node, &total_students);
+            break;
+        case 2:
+            display(head_node);
+            break;
+        default:
+            break;
+        }
+
+        printf("\t\tTotal students: %d\n", total_students);
     }
-
-    printf("Total students: %d", total_students);
-
     return 0;
 }
 
-void add_student(struct Student students[], int *total_students) {
+void add_student(struct Student **head_node, int *total_students)
+{
     char name_buffer[100];
     char course_buffer[100];
     char id_number[100];
     int age;
 
-    printf("Enter student name: ");
+    printf("\t\tEnter student name: ");
     fgets(name_buffer, sizeof(name_buffer), stdin);
     name_buffer[strcspn(name_buffer, "\n")] = '\0';
 
-    printf("Enter course: ");
+    printf("\t\tEnter course: ");
     fgets(course_buffer, sizeof(course_buffer), stdin);
     course_buffer[strcspn(course_buffer, "\n")] = '\0';
 
-    printf("Enter ID number: "); 
+    printf("\t\tEnter ID number: ");
     fgets(id_number, sizeof(id_number), stdin);
     id_number[strcspn(id_number, "\n")] = '\0';
-    printf("Enter age: "); 
-    scanf("%d", &age);
+    printf("\t\tEnter age: ");
+    scanf("\t\t%d", &age);
 
     char ch;
     while ((ch = getchar()) != '\n');
-    
-    strcpy(students[*total_students].name, name_buffer);
-    strcpy(students[*total_students].course, course_buffer);
-    strcpy(students[*total_students].id_number,  id_number); 
-    students[*total_students].age = age;
+
+    struct Student *new = (struct Student *)malloc(sizeof(struct Student));
+    strcpy(new->name, name_buffer);
+    strcpy(new->course, course_buffer);
+    strcpy(new->id_number, id_number);
+    new->age = age;
+    new->next = NULL;
+
+    if (*head_node == NULL)
+    {
+        *head_node = new;
+    }
+    else
+    {
+        // traverse
+        struct Student *temp = *head_node;
+        while (temp->next != NULL)
+        {
+            temp = temp->next;
+        }
+
+        temp->next = new;
+    }
+
+    // strcpy(students[*total_students].name, name_buffer);
+    // strcpy(students[*total_students].course, course_buffer);
+    // strcpy(students[*total_students].id_number,  id_number);
+    // students[*total_students].age = age;
 
     (*total_students)++;
 }
 
+void display(struct Student *head_node)
+{
+    system("cls");
+    printf("\n\t\t=======Displaying Students========\n");
+    struct Student *temp = head_node;
 
-void display(struct Student students[]) {
-    printf("Displaying...");
+    // traverse...
+    while (temp != NULL)
+    {
 
-    // TODO
+        printf("\t\tName: %s\n", temp->name);
+        printf("\t\tCourse: %s\n", temp->course);
+        printf("\t\tID Number: %s\n", temp->id_number);
+        printf("\t\tAge: %s\n", temp->age);
+        temp = temp->next;
+    }
 }
