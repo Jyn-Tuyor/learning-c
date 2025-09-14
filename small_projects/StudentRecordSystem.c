@@ -122,7 +122,10 @@ void display(struct Student *head_node)
         printf("\t\tName: %s\n", temp->name);
         printf("\t\tCourse: %s\n", temp->course);
         printf("\t\tID Number: %s\n", temp->id_number);
-        printf("\t\tAge: %s\n", temp->age);
+        printf("\t\tAge: %d\n", temp->age);
+        printf("\n\n");
         temp = temp->next;
+
     }
+
 }
