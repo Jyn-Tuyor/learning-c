@@ -13,6 +13,7 @@ struct Student
 
 void add_student(struct Student **head_node, int *total_students);
 void display(struct Student *head_node);
+struct Student *search_by_id(struct Student *head_node);
 
 int main(void)
 {
@@ -30,6 +31,8 @@ int main(void)
         printf("\t\t========Student Record System========\n");
         printf("\t\t[1] Add a student\n");
         printf("\t\t[2] Display\n");
+        printf("\t\t[3] Search by ID Number\n");
+
 
         int input;
 
@@ -44,6 +47,22 @@ int main(void)
             break;
         case 2:
             display(head_node);
+            break;
+        case 3:
+            if (head_node == NULL) {
+                break;
+            }
+
+            struct Student *student = search_by_id(head_node);
+            printf("\t\tName: %s\n\t\tID Number: %s\n\t\tCourse: %s\n\t\tAge: %d\n",
+                student->name,
+                student->id_number,
+                student->course,
+                student->id_number
+            );
+
+            printf("\n\n"); 
+            
             break;
         default:
             break;
@@ -127,5 +146,33 @@ void display(struct Student *head_node)
         temp = temp->next;
 
     }
+
+}
+
+struct Student *search_by_id(struct Student *head_node) {
+    system("cls");
+    char id_number[100];
+    printf("\t\tEnter student ID Number: ");
+    fgets(id_number, sizeof(id_number), stdin);
+
+    id_number[strcspn(id_number, "\n")] = '\0';
+
+    // traverse...
+
+    struct Student *temp = head_node;
+
+
+
+    while (temp != NULL) {
+        if (strcmp(temp->id_number, id_number) == 0) {
+            printf("\t\tStudent found...\n");
+            printf("\n\n");
+            return temp;
+        }
+        printf("\t\tStudent not found...\n");
+        temp = temp->next; 
+    }
+
+    // printf("\n\n");
 
 }
