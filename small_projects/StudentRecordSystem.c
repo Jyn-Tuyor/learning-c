@@ -2,6 +2,9 @@
 #include <stdlib.h>
 #include <string.h>
 
+// Remove warnings in astronvim
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+
 struct Student {
   char name[512];
   char course[512];
@@ -14,6 +17,7 @@ void add_student(struct Student **head_node, int *total_students);
 void display(struct Student *head_node);
 struct Student *search_by_id(struct Student *head_node);
 void update(struct Student *head_node);
+void delete(struct Student **head_node, int *total_students);
 
 int main(void) {
   struct Student *head_node = NULL;
@@ -62,6 +66,10 @@ int main(void) {
       break;
     case 4:
       update(head_node);
+      break;
+
+    case 5:
+      delete(&head_node, &total_students);
       break;
     default:
       break;
@@ -194,7 +202,7 @@ void update(struct Student *head_node) {
       fgets(id_number, sizeof(id_number), stdin);
       id_number[strcspn(id_number, "\n")] = '\0';
       strcpy(student->id_number, id_number);
-
+      break;
     case 3:
       printf("\t\tEnter new course: ");
       fgets(course, sizeof(course), stdin);
@@ -211,4 +219,34 @@ void update(struct Student *head_node) {
       break;
     }
   }
+}
+
+void delete(struct Student **head_node, int *total_students) {
+  struct Student *temp = *head_node;
+  struct Student *prev = NULL;
+  // n -> n -> n
+  char id_number[50];
+  printf("\t\tEnter ID number to be deleted: ");
+  fgets(id_number, sizeof(id_number), stdin);
+  id_number[strcspn(id_number, "\n")] = '\0';
+
+  if (strcmp(id_number, temp->id_number) == 0) {
+    *head_node = temp->next;
+    free(temp);
+    return;
+  }
+
+  // traverse...
+  while (temp != NULL && strcmp(temp->id_number, id_number) != 0) {
+    prev = temp;
+    temp = temp->next;
+  }
+
+  if (temp == NULL) {
+    return;
+  }
+
+  prev->next = temp->next;
+  free(temp);
+  (*total_students)--;
 }
