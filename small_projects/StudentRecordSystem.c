@@ -13,6 +13,7 @@ struct Student {
 void add_student(struct Student **head_node, int *total_students);
 void display(struct Student *head_node);
 struct Student *search_by_id(struct Student *head_node);
+void update(struct Student *head_node);
 
 int main(void) {
   struct Student *head_node = NULL;
@@ -28,8 +29,8 @@ int main(void) {
     printf("\t\t========Student Record System========\n");
     printf("\t\t[1] Add a student\n");
     printf("\t\t[2] Display\n");
-    printf("\t\t[3] Search by ID Number\n");
-
+    printf("\t\t[3] Search\n");
+    printf("\t\t[4] Update");
     int input;
 
     scanf("%d", &input);
@@ -58,6 +59,9 @@ int main(void) {
 
         printf("\n\n");
       }
+      break;
+    case 4:
+      update(head_node);
       break;
     default:
       break;
@@ -156,4 +160,55 @@ struct Student *search_by_id(struct Student *head_node) {
 
   // printf("\n\n");
   return NULL;
+}
+
+void update(struct Student *head_node) {
+  struct Student *student = search_by_id(head_node);
+  int input;
+
+  char name[100];
+  char id_number[50];
+  char course[100];
+  int age;
+
+  if (student != NULL) {
+    printf("\t\tWhich info do you want to update?\n");
+    printf("\t\t[1] Name\n");
+    printf("\t\t[2] ID Number\n");
+    printf("\t\t[3] Course\n");
+    printf("\t\t[4] Age\n");
+
+    scanf("%d", &input);
+
+    getchar();
+
+    switch (input) {
+    case 1:
+      printf("\t\tEnter new name: ");
+      fgets(name, sizeof(name), stdin);
+      name[strcspn(name, "\n")] = '\0';
+      strcpy(student->name, name);
+      break;
+    case 2:
+      printf("\t\tEnter new ID number: ");
+      fgets(id_number, sizeof(id_number), stdin);
+      id_number[strcspn(id_number, "\n")] = '\0';
+      strcpy(student->id_number, id_number);
+
+    case 3:
+      printf("\t\tEnter new course: ");
+      fgets(course, sizeof(course), stdin);
+      course[strcspn(course, "\n")] = '\0';
+      strcpy(student->course, course);
+      break;
+    case 4:
+      printf("\t\tEnter new age: ");
+      scanf("%d", &age);
+      student->age = age;
+      getchar();
+      break;
+    default:
+      break;
+    }
+  }
 }
