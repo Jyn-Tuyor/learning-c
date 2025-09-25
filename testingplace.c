@@ -1,37 +1,14 @@
 #include <stdio.h>
-#include <stdbool.h>
-#include <string.h>
-
-// 1, 2, 1, 1, 5
-// void print_uniques(int array[], int n) {
-// 	bool flag = false;
-// 	for (int i = 0; i < n; i++) {
-// 		flag = false;
-
-// 		for (int j = i; j < n+1; j++) {
-// 			if (j != i && array[j] == array[i]) {
-// 				flag = true;
-// 			}
-// 		}
-// 		if (!flag) {
-// 			printf("%d", array[i]);	
-// 		}
-// 	}	
-// }
-
 
 int main() {
-	int array[5] = {1, 2, 1, 1, 5};	
-	//int n = sizeof(array)/sizeof(array[0]);
-	//print_uniques(array, n); 
 
-	// printf("%zu", sizeof(array)/sizeof(array[0]));
+	// With '\0' (null terminator) 
+	char str_with[] = {'h', 'e', 'l', 'l', 'o', '\0'};
+	// Without '\0' (null terminator) 
+	char str_without[] = {'h', 'e', 'l', 'l', 'o'};
 
-	char myStr[] = "Learn C++, Java and Python!";
-	int pos = strcspn(myStr, "\n");
-	printf("%d", pos);
+	
+	printf("%s", str_without);
 
 	return 0;
-
 }
-
