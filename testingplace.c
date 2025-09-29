@@ -1,14 +1,13 @@
 #include <stdio.h>
 
 int main() {
+	// string literal
+	char str1[] = "hello";
+	char str2[6] = "hello";
+	// array form
+	char str3[6] = { 'h', 'e', 'l', 'l', 'o', '\0' };
+	char str4[] = { 'h', 'e', 'l', 'l', 'o', '\0' };
 
-	// With '\0' (null terminator) 
-	char str_with[] = {'h', 'e', 'l', 'l', 'o', '\0'};
-	// Without '\0' (null terminator) 
-	char str_without[] = {'h', 'e', 'l', 'l', 'o'};
-
-	
-	printf("%s", str_without);
 
 	return 0;
 }
