@@ -22,6 +22,7 @@ Just a simple repository to track my learning in C
     - pointers
     - memory allocation
     - FILE *ptr
+    - Seperating functions in other files
       
 - ✅ Simple algorithms
     - Bubble sorts
